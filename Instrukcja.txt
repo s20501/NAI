@@ -1,0 +1,4 @@
+1. Plansza składa się z pól 6x8
+2. Gracz może poruszyć się o jedno pole(boki/skosy) na turę 
+3. Gracz nie może stanąć na polu na którym on lub jego przeciwnik już kiedyś stanął
+4. Gracz przegrywa gdy nie może już zrobić następnego ruchu
