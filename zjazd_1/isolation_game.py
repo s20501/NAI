@@ -23,6 +23,9 @@ class IsolationGame(TwoPlayerGame):
     # Move through the board and save the current player field
     def make_move(self, move):
         player_index = self.current_player - 1
+        prev_pos = self.players_position[player_index]
+        self.board[prev_pos[0]][prev_pos[1]] = "X"
+
         match move:
             case "w":
                 self.players_position[player_index][1] = self.check_y_axis_bounds(
@@ -73,6 +76,6 @@ class IsolationGame(TwoPlayerGame):
 
 
 # Start a match (and store the history of moves when it ends)
-ai = Negamax(13)  # The AI will think 13 moves in advance
+ai = Negamax(1)  # The AI will think 13 moves in advance
 game = IsolationGame([Human_Player(), AI_Player(ai)])
 history = game.play()
