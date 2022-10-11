@@ -76,6 +76,6 @@ class IsolationGame(TwoPlayerGame):
 
 
 # Start a match (and store the history of moves when it ends)
-ai = Negamax(1)  # The AI will think 13 moves in advance
+ai = Negamax(13)  # The AI will think 13 moves in advance
 game = IsolationGame([Human_Player(), AI_Player(ai)])
 history = game.play()
