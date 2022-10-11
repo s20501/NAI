@@ -9,7 +9,7 @@ class IsolationGame(TwoPlayerGame):
         self.board = [[]]
         self.current_player = 1
         self.players_position = [[0, 2], [7, 3]]
-        # self.current_field = "O"
+        self.current_field = "O"
 
         # fill board
         for x in range(8):
