@@ -25,13 +25,31 @@ class IsolationGame(TwoPlayerGame):
         player_index = self.current_player - 1
         match move:
             case "w":
-                self.players_position[player_index][1] = self.players_position[player_index][1] - 1
+                self.players_position[player_index][1] = self.check_y_axis_bounds(
+                    self.players_position[player_index][1] - 1)
             case "a":
-                self.players_position[player_index][0] = self.players_position[player_index][0] - 1
+                self.players_position[player_index][0] = self.check_x_axis_bounds(
+                    self.players_position[player_index][0] - 1)
             case "s":
-                self.players_position[player_index][1] = self.players_position[player_index][1] + 1
+                self.players_position[player_index][1] = self.check_y_axis_bounds(
+                    self.players_position[player_index][1] + 1)
             case "d":
-                self.players_position[player_index][0] = self.players_position[player_index][0] + 1
+                self.players_position[player_index][0] = self.check_x_axis_bounds(
+                    self.players_position[player_index][0] + 1)
+
+    def check_x_axis_bounds(self, pos):
+        if pos < 0:
+            return 7
+        elif pos > 7:
+            return 0
+        return pos
+
+    def check_y_axis_bounds(self, pos):
+        if pos < 0:
+            return 5
+        elif pos > 5:
+            return 0
+        return pos
 
     def win(self): self.current_field != "O"
 
@@ -49,7 +67,7 @@ class IsolationGame(TwoPlayerGame):
                 else:
                     print(Fore.WHITE + self.board[x][y], end="")
 
-        print()
+        print(Fore.WHITE)
 
     def scoring(self): return 100 if self.win() else 0  # For the AI
 
