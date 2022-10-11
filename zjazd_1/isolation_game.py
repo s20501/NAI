@@ -40,6 +40,9 @@ class IsolationGame(TwoPlayerGame):
                 self.players_position[player_index][0] = self.check_x_axis_bounds(
                     self.players_position[player_index][0] + 1)
 
+        curr_pos = self.players_position[player_index]
+        self.current_field = self.board[curr_pos[0]][curr_pos[1]]
+
     def check_x_axis_bounds(self, pos):
         if pos < 0:
             return 7
@@ -54,7 +57,7 @@ class IsolationGame(TwoPlayerGame):
             return 0
         return pos
 
-    def win(self): self.current_field != "O"
+    def win(self): return self.current_field != "O"
 
     def is_over(self): return self.win()  # Game stops when someone wins.
 
