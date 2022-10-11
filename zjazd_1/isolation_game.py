@@ -20,18 +20,20 @@ class IsolationGame(TwoPlayerGame):
 
     def possible_moves(self): return ["w", "a", "s", "d"]
 
+    # Move through the board and save the current player field
     def make_move(self, move):
+        player_index = self.current_player - 1
         match move:
             case "w":
-                pass
+                self.players_position[player_index][1] = self.players_position[player_index][1] - 1
             case "a":
-                pass
+                self.players_position[player_index][0] = self.players_position[player_index][0] - 1
             case "s":
-                pass
+                self.players_position[player_index][1] = self.players_position[player_index][1] + 1
             case "d":
-                pass
+                self.players_position[player_index][0] = self.players_position[player_index][0] + 1
 
-    def win(self): self.current_field == "X"
+    def win(self): self.current_field != "O"
 
     def is_over(self): return self.win()  # Game stops when someone wins.
 
