@@ -32,21 +32,50 @@ cube_size.automf(3, 'quant', ['small', 'medium', 'big'])
 
 # Rules. You need fewer cubes when the cube size is bigger and the glass is smaller
 rules = [
-    ctrl.Rule(
-        temperature['cold'] & (glass_size['small'] | glass_size['medium']) & (cube_size['medium'] | cube_size['big']),
-        cube_count['low']),
-    ctrl.Rule(
-        temperature['cold'] & (glass_size['small'] | glass_size['medium']) & cube_size['small'],
-        cube_count['medium']),
-    ctrl.Rule(temperature['mild'] & glass_size['medium'] & cube_size['medium'], cube_count['medium']),
-    ctrl.Rule(temperature['mild'] & glass_size['big'] & cube_size['small'], cube_count['high']),
-    ctrl.Rule(temperature['mild'] & glass_size['small'] & cube_size['big'], cube_count['low']),
-    ctrl.Rule(
-        temperature['hot'] & (cube_size['small'] | cube_size['medium']) & (glass_size['big'] | glass_size['medium']),
-        cube_count['high']),
-    ctrl.Rule(
-        temperature['hot'] & cube_size['big'] & (glass_size['big'] | glass_size['medium']),
-        cube_count['medium'])
+    # ctrl.Rule(
+    #     temperature['cold'] & (glass_size['small'] | glass_size['medium']) & (cube_size['medium'] | cube_size['big']),
+    #     cube_count['low']),
+    # ctrl.Rule(
+    #     temperature['cold'] & (glass_size['small'] | glass_size['medium']) & cube_size['small'],
+    #     cube_count['medium']),
+    # ctrl.Rule(temperature['mild'] & glass_size['medium'] & cube_size['medium'], cube_count['medium']),
+    # ctrl.Rule(temperature['mild'] & glass_size['big'] & cube_size['small'], cube_count['high']),
+    # ctrl.Rule(temperature['mild'] & glass_size['small'] & cube_size['big'], cube_count['low']),
+    # ctrl.Rule(
+    #     temperature['hot'] & (cube_size['small'] | cube_size['medium']) & (glass_size['big'] | glass_size['medium']),
+    #     cube_count['high']),
+    # ctrl.Rule(
+    #     temperature['hot'] & cube_size['big'] & (glass_size['big'] | glass_size['medium']),
+    #     cube_count['medium']),
+
+    ctrl.Rule(cube_size['small'] & glass_size['small'] & temperature['cold'] ,cube_count['high']),
+    ctrl.Rule(cube_size['small'] & glass_size['small'] & temperature['mild'] ,cube_count['medium']),
+    ctrl.Rule(cube_size['small'] & glass_size['small'] & temperature['hot'] ,cube_count['low']),
+    ctrl.Rule(cube_size['small'] & glass_size['medium'] & temperature['cold'] ,cube_count['high']),
+    ctrl.Rule(cube_size['small'] & glass_size['medium'] & temperature['mild'] ,cube_count['medium']),
+    ctrl.Rule(cube_size['small'] & glass_size['medium'] & temperature['hot'] ,cube_count['low']),
+    ctrl.Rule(cube_size['small'] & glass_size['big'] & temperature['cold'] ,cube_count['high']),
+    ctrl.Rule(cube_size['small'] & glass_size['big'] & temperature['mild'] ,cube_count['medium']),
+    ctrl.Rule(cube_size['small'] & glass_size['big'] & temperature['hot'] ,cube_count['low']),
+    ctrl.Rule(cube_size['medium'] & glass_size['small'] & temperature['cold'] ,cube_count['high']),
+    ctrl.Rule(cube_size['medium'] & glass_size['small'] & temperature['mild'] ,cube_count['medium']),
+    ctrl.Rule(cube_size['medium'] & glass_size['small'] & temperature['hot'] ,cube_count['low']),
+    ctrl.Rule(cube_size['medium'] & glass_size['medium'] & temperature['cold'] ,cube_count['high']),
+    ctrl.Rule(cube_size['medium'] & glass_size['medium'] & temperature['mild'] ,cube_count['medium']),
+    ctrl.Rule(cube_size['medium'] & glass_size['medium'] & temperature['hot'] ,cube_count['low']),
+    ctrl.Rule(cube_size['medium'] & glass_size['big'] & temperature['cold'] ,cube_count['high']),
+    ctrl.Rule(cube_size['medium'] & glass_size['big'] & temperature['mild'] ,cube_count['medium']),
+    ctrl.Rule(cube_size['medium'] & glass_size['big'] & temperature['hot'] ,cube_count['low']),
+    ctrl.Rule(cube_size['big'] & glass_size['small'] & temperature['cold'] ,cube_count['high']),
+    ctrl.Rule(cube_size['big'] & glass_size['small'] & temperature['mild'] ,cube_count['medium']),
+    ctrl.Rule(cube_size['big'] & glass_size['small'] & temperature['hot'] ,cube_count['low']),
+    ctrl.Rule(cube_size['big'] & glass_size['medium'] & temperature['cold'] ,cube_count['high']),
+    ctrl.Rule(cube_size['big'] & glass_size['medium'] & temperature['mild'] ,cube_count['medium']),
+    ctrl.Rule(cube_size['big'] & glass_size['medium'] & temperature['hot'] ,cube_count['low']),
+    ctrl.Rule(cube_size['big'] & glass_size['big'] & temperature['cold'] ,cube_count['high']),
+    ctrl.Rule(cube_size['big'] & glass_size['big'] & temperature['mild'] ,cube_count['medium']),
+    ctrl.Rule(cube_size['big'] & glass_size['big'] & temperature['hot'] ,cube_count['low']),
+
 ]
 
 # Simulating control system
