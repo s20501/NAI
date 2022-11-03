@@ -1,5 +1,5 @@
 # Authors: Marcin Żmuda-Trzebiatowski and Jakub Cirocki
-# Example: ...
+# Example: https://github.com/s20501/NAI/blob/main/zjazd_2/example.PNG
 #
 # The program calculates the count of cubes needed to chill the drink.
 # To run program install
