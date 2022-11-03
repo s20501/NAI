@@ -27,8 +27,8 @@ temperature['mild'] = fuzz.trimf(temperature.universe, [15, 40, 40])
 temperature['hot'] = fuzz.trimf(temperature.universe, [40, 100, 100])
 
 # Auto-membership functions
-glass_size.automf(3, 'quant', ['small', 'medium', 'big'])
-cube_size.automf(3, 'quant', ['small', 'medium', 'big'])
+glass_size.automf(3, 'quant', ['big', 'medium', 'small'])
+cube_size.automf(3, 'quant', ['big', 'medium', 'small'])
 
 # Rules. You need fewer cubes when the cube size is bigger and the glass is smaller
 rules = [
