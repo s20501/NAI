@@ -1,5 +1,4 @@
 # Authors: Marcin Żmuda-Trzebiatowski and Jakub Cirocki
-# Example: https://github.com/s20501/NAI/blob/main/zjazd_3/screen_1.PNG
 #
 
 import argparse
