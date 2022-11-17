@@ -49,6 +49,18 @@ def euclidean_score(dataset, user1, user2):
     return 1 / (1 + np.sqrt(np.sum(squared_diff)))
 
 
+def user_best_movies(dataset, user1, user2):
+    """
+    Getting the best movies from user
+    """
+    user1_movies = dataset[user1]
+    user2_movies = dataset[user2]
+
+    user2_movies_sorted = dict(sorted(user2_movies.items(), key=lambda item: item[1], reverse=True))
+
+    return dict(filter(lambda item: item[1] > 5 and item[0] not in user1_movies, user2_movies_sorted.items()))
+
+
 if __name__ == '__main__':
     args = build_arg_parser().parse_args()
     user_input = args.user
@@ -66,3 +78,30 @@ if __name__ == '__main__':
 
     scores_sorted_asc = dict(sorted(all_scores.items(), key=lambda item: item[1]))
     scores_sorted_desc = dict(sorted(all_scores.items(), key=lambda item: item[1], reverse=True))
+
+    print("Asc: ", scores_sorted_asc)
+    print("\n")
+    print("Desc: ", scores_sorted_desc)
+    print("\n")
+
+    best_movies = {}
+    for user in scores_sorted_desc:
+        while len(best_movies) < 6:
+            best_movies = user_best_movies(data, user_input, user) | best_movies
+
+    print("Rekomendacje")
+    best_movies = list(best_movies.keys())
+    for movie_index in range(5):
+        print(best_movies[movie_index])
+
+    print("\n")
+
+    worst_movies = {}
+    for user in scores_sorted_asc:
+        while len(worst_movies) < 6:
+            worst_movies = user_best_movies(data, user_input, user) | worst_movies
+
+    print("Nie oglądaj")
+    worst_movies = list(worst_movies.keys())
+    for movie_index in range(5):
+        print(worst_movies[movie_index])
