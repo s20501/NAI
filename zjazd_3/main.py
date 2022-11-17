@@ -1,3 +1,7 @@
+# Authors: Marcin Żmuda-Trzebiatowski and Jakub Cirocki
+# Example: https://github.com/s20501/NAI/blob/main/zjazd_3/screen_1.PNG
+#
+
 import argparse
 import json
 import numpy as np
@@ -78,11 +82,6 @@ if __name__ == '__main__':
 
     scores_sorted_asc = dict(sorted(all_scores.items(), key=lambda item: item[1]))
     scores_sorted_desc = dict(sorted(all_scores.items(), key=lambda item: item[1], reverse=True))
-
-    print("Asc: ", scores_sorted_asc)
-    print("\n")
-    print("Desc: ", scores_sorted_desc)
-    print("\n")
 
     best_movies = {}
     for user in scores_sorted_desc:
