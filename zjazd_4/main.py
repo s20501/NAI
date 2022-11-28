@@ -30,9 +30,9 @@ def train(csvName):
 
     print(csvName)
 
-    print("Decision tree", metrics.accuracy_score(y_test, y_pred))
+    print("Decision tree accuracy score: ", metrics.accuracy_score(y_test, y_pred))
 
-    print("SVC", metrics.accuracy_score(y_test, predictions))
+    print("SVC accuracy score: ", metrics.accuracy_score(y_test, predictions))
     print()
 
 
