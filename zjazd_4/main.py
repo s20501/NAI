@@ -5,28 +5,42 @@ from sklearn.metrics import confusion_matrix
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import metrics
 
-df = pd.read_csv('data.csv', names=['Variance', 'Skewness', 'Curtosis', 'Entropy','Class'])
 
 
-data = df.values
-X = data[:,:4]
-Y = data[:,4]
+def train(csvName):
+    df = pd.read_csv(csvName)
 
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=1)
 
-svn = SVC(kernel='rbf', C=1, gamma=100)
-svn.fit(X_train, y_train)
+    data = df.values
+    X = data[:, :4]
+    Y = data[:, 4]
 
-clf = DecisionTreeClassifier()
-clf = clf.fit(X_train,y_train)
+    X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=1)
 
-y_pred = clf.predict(X_test)
+    svn = SVC(gamma=100)
+    svn.fit(X_train, y_train)
 
-predictions = svn.predict(X_test)
-confusion_matrix(y_test,predictions)
+    clf = DecisionTreeClassifier()
+    clf = clf.fit(X_train, y_train)
 
-print(metrics.accuracy_score(y_test, y_pred))
+    y_pred = clf.predict(X_test)
 
-print(metrics.accuracy_score(y_test, predictions))
+    predictions = svn.predict(X_test)
+    confusion_matrix(y_test, predictions)
+
+    print(csvName)
+
+    print("Decision tree", metrics.accuracy_score(y_test, y_pred))
+
+    print("SVC", metrics.accuracy_score(y_test, predictions))
+    print()
+
+
+
+
+if __name__ == '__main__':
+    train("banknotes.csv")
+    train("transfusion.csv")
+
 
 
