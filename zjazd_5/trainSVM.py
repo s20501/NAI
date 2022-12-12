@@ -32,6 +32,7 @@ def trainSVM(csvName):
     predictions = svn.predict(X_test)
     confusion_matrix(y_test, predictions)
 
+    print(csvName)
 
     print("Decision tree accuracy score: ", metrics.accuracy_score(y_test, y_pred))
 

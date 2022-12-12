@@ -6,15 +6,17 @@ from sklearn.metrics import accuracy_score
 
 
 def trainNetwork(csvName):
+    """
+    Neural networks train
+    :param csvName:
+    """
     df = pd.read_csv(csvName)
 
     df['is_authentic'] = [1 if Class == 1 else 0 for Class in df['Class']]
     df.drop('Class', axis=1, inplace=True)
 
     x = df.drop('is_authentic', axis=1)
-    """Data split for training and testing sets 80/20, features will be everything but target variable"""
     y = df['is_authentic']
-    """Target variable"""
 
 
 
@@ -33,7 +35,7 @@ def trainNetwork(csvName):
     y_hat = [0 if val < 0.5 else 1 for val in y_hat]
 
 
-
+    print(csvName)
     print("Neural networks accuracy score: ",  accuracy_score(y_test, y_hat))
 
 
