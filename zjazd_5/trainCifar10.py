@@ -36,7 +36,6 @@ def trainCifar10():
     print('Cifar10 accuracy:', test_acc)
 
     # confusion matrix
-    # TODO fix
     y_pred = model.predict(test_images)
     y_pred_classes = np.argmax(y_pred, axis=1)
     y_true = np.argmax(test_labels, axis=1)
