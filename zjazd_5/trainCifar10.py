@@ -1,5 +1,8 @@
 import tensorflow as tf
 from keras import layers, models
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 
 def trainCifar10():
@@ -31,3 +34,16 @@ def trainCifar10():
 
     test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
     print('Cifar10 accuracy:', test_acc)
+
+    # confusion matrix
+    # TODO fix
+    y_pred = model.predict(test_images)
+    y_pred_classes = np.argmax(y_pred, axis=1)
+    y_true = np.argmax(test_labels, axis=1)
+    confusion_mtx = tf.math.confusion_matrix(y_true, y_pred_classes)
+
+    classes = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+    plt.figure(figsize=(12, 9))
+    c = sns.heatmap(confusion_mtx, annot=True, fmt='g')
+    c.set(xticklabels=classes, yticklabels=classes)
+    plt.show()
