@@ -21,9 +21,8 @@ def trainNetwork(csvName):
 
 
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=1)
-
     model = Sequential()
-    model.add(Dense(units=32,activation='relu',input_dim=4))
+    model.add(Dense(units=32,activation='relu',input_dim=len(df.columns) - 1))
     model.add(Dense(units=64,activation='relu'))
     model.add(Dense(units=64,activation='relu'))
     model.add(Dense(units=1,activation='sigmoid'))
@@ -31,12 +30,12 @@ def trainNetwork(csvName):
     model.compile(loss='binary_crossentropy', optimizer='sgd', metrics='accuracy')
 
     model.fit(x_train, y_train, epochs=200, batch_size=32)
-    y_hat = model.predict(x_test)
-    y_hat = [0 if val < 0.5 else 1 for val in y_hat]
+
+    test_loss, test_acc = model.evaluate(x_test, y_test, verbose=2)
 
 
     print(csvName)
-    print("Neural networks accuracy score: ",  accuracy_score(y_test, y_hat))
+    print("Neural networks accuracy score: ",  test_acc)
 
 
 
