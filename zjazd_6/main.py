@@ -1,5 +1,5 @@
 # Authors: Marcin Żmuda-Trzebiatowski and Jakub Cirocki
-# Example: https://github.com/s20501/NAI/blob/main/zjazd_4/example.PNG
+# Example: https://github.com/s20501/NAI/blob/main/zjazd_6/example/example.mkv
 #
 # A program that recognizes gestures and overlaps certain images on the user's face depending on that gesture.
 
