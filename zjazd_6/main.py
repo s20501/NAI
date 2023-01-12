@@ -1,3 +1,7 @@
+# Authors: Marcin Żmuda-Trzebiatowski and Jakub Cirocki
+# Example: https://github.com/s20501/NAI/blob/main/zjazd_4/example.PNG
+#
+# A program that recognizes gestures and overlaps certain images on the user's face depending on that gesture.
 
 import cv2
 import itertools
