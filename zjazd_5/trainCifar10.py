@@ -39,7 +39,7 @@ def trainCifar10():
     y_pred = model.predict(test_images)
     y_pred_classes = np.argmax(y_pred, axis=1)
     y_true = np.argmax(test_labels, axis=1)
-    confusion_mtx = tf.math.confusion_matrix(y_true, y_pred_classes)
+    confusion_mtx = tf.math.confusion_matrix( y_pred_classes, y_true)
 
     classes = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
     plt.figure(figsize=(12, 9))
